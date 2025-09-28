@@ -30,6 +30,7 @@ function App() {
       setIsOpen(false)
     }
 
+    
   return (
     <>
 <main className="container mx-auto px-3  sm:max-w-[540px]   md:max-w-[720px] lg:max-w-[960px]  xl:max-w-[1140px]  2xl:max-w-[1320px]">
@@ -39,9 +40,9 @@ function App() {
   </div>
 </main>
 <Model isOpen={isOpen} close={close} title='Add produact'  >
-  <div className='space-y-3'>
+  <form className='space-y-3'>
   {rendarformlist}
-  </div>
+  </form>
   <div className='flex items-center space-x-3'>
     
    <ButtonI className='bg-blue-600  '>Submit</ButtonI>
