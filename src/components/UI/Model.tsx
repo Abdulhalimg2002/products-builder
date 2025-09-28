@@ -1,5 +1,5 @@
-import { Button, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
-import { useState, type ReactNode } from 'react'
+import {  Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
+import type {  ReactNode } from 'react'
 
 
 interface IPropesM{
@@ -23,10 +23,10 @@ const Model=({isOpen,close,title,children}:IPropesM)=>{
              
             <DialogPanel
               transition
-              className="w-full max-w-md rounded-xl bg-black p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
+              className="w-full max-w-md rounded-xl bg-white p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
             >
                
-             {title && <DialogTitle as="h3" className="text-base/7 font-medium text-white">
+             {title && <DialogTitle as="h3" className="text-base/7 font-medium text-black text-bold">
                 {title}
               </DialogTitle>}
              

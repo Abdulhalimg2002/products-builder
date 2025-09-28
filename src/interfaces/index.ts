@@ -10,3 +10,9 @@ export interface Iproduact{
         imag:string;
     };
 }
+export interface Iforms{
+    id:string;
+    name:string;
+     label:string;
+     type:string;
+}

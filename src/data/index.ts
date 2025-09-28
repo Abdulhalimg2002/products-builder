@@ -1,4 +1,5 @@
-import type {Iproduact} from "../interfaces";
+
+import type {Iproduact,Iforms} from "../interfaces";
 import  {v4 as uuid} from "uuid";
 export const produactlis:Iproduact[]=[
 
@@ -108,4 +109,31 @@ imag:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxITEhUTEhMWFRU
   },
   
 
+]
+export const formlist:Iforms[]=[
+    {
+     id:"title",
+     name:"title",
+     label:"Produact title",
+     type:"text",
+    },
+      {
+     id:"des",
+     name:"des",
+     label:"Des",
+     type:"text",
+    },
+       {
+     id:"image",
+     name:"image",
+     label:"image",
+     type:"text",
+    },
+       {
+     id:"price",
+     name:"price",
+     label:"Price",
+     type:"text",
+    },
+    
 ]
