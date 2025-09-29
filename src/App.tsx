@@ -6,31 +6,62 @@ import ButtonI from './components/UI/ButtonI';
 import Model from './components/UI/Model';
 import { produactlis,formlist } from './data'
 import Input from './components/UI/Input';
-import { useState } from 'react'
+import { useState, type ChangeEvent, type FormEvent } from 'react'
+import type { Iproduact } from './interfaces';
 
 
 
 
 
 function App() {
+  const defultProduactObj={
+    title:'',
+    des:'',
+    imag:'',
+    price:'',
+    color:[],
+    category:{
+      name:'',
+      imag:"",
+    },
 
- const rendarproduact=produactlis.map(prodact=><ProudactC key={prodact.id} proudact={prodact }/> );
- const rendarformlist=formlist.map(input=><div className='text-black flex flex-col'>
-  <label  htmlFor={input.id}>{input.label}</label>
-  <Input type={input.type} id={input.id} name={input.name}/>
- </div>)
+  };
+  const[prodact,setprodact]=useState<Iproduact>(defultProduactObj);
    const [isOpen, setIsOpen] = useState(false);
 
+const close=()=> setIsOpen(false);
+const open=()=> setIsOpen(true);
+  
 
-    function open() {
-      setIsOpen(true)
-    }
+const onChangeHandler=(event:ChangeEvent<HTMLInputElement>)=>{
+  const{value,name}=event.target;
+  setprodact({
+...prodact,
+[name]:value,
+  });
+};
+const submitHandler=(event: FormEvent<HTMLFormElement>): void =>{
+  event.preventDefault();
+ close();
 
-    function close() {
-      setIsOpen(false)
-    }
+  };
+  const onCancel=()=>{
+    console.log("cancel");
+    setprodact(defultProduactObj)
+  }
+ const rendarproduact=produactlis.map(prodact=><ProudactC key={prodact.id} proudact={prodact }/> );
+ const rendarformlist=formlist.map(input=><div className='text-black flex flex-col' key={input.id}>
+  <label  htmlFor={input.id}>{input.label}</label>
+  <Input type={input.type} id={input.id} name={input.name} value={prodact[input.name]} onChange={onChangeHandler}/>
+ </div>)
+  
+    
 
     
+
+
+  
+
   return (
     <>
 <main className="container mx-auto px-3  sm:max-w-[540px]   md:max-w-[720px] lg:max-w-[960px]  xl:max-w-[1140px]  2xl:max-w-[1320px]">
@@ -40,14 +71,15 @@ function App() {
   </div>
 </main>
 <Model isOpen={isOpen} close={close} title='Add produact'  >
-  <form className='space-y-3'>
+  <form onSubmit={submitHandler} className='space-y-3'>
   {rendarformlist}
-  </form>
+ 
   <div className='flex items-center space-x-3'>
     
    <ButtonI className='bg-blue-600  '>Submit</ButtonI>
-  <ButtonI className='bg-red-600 ' onClick={close}>Cancel</ButtonI>
+  <ButtonI  className='bg-red-600 ' onClick={onCancel} >Cancel</ButtonI>
   </div>
+   </form>
 </Model>
 
 

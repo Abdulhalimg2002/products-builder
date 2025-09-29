@@ -125,7 +125,7 @@ export const formlist:Iforms[]=[
     },
        {
      id:"image",
-     name:"image",
+     name:"imag",
      label:"image",
      type:"text",
     },

@@ -12,7 +12,7 @@ export interface Iproduact{
 }
 export interface Iforms{
     id:string;
-    name:string;
+    name:'title'|'des'|'imag'|'price';
      label:string;
      type:string;
 }
