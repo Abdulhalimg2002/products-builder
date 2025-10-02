@@ -1,7 +1,7 @@
 import type { Iproduact } from "../interfaces";
 import Image from "./Imag";
 import ButtonI from "./UI/ButtonI";
-import { textS } from "../Utils/Function";
+
 
 
 
@@ -16,8 +16,8 @@ const ProudactC=({proudact}:IPropes)=>{
         <div className=" border max-w-sm md:max-w-lg md:max-0 mx-auto rounded-md p-2 flex flex-col">
             <Image imagU={imag} alt="" className="rounded-md mb-2">
             </Image>
-          <h3>{textS(title,25)}</h3>
-         <p>{textS(des)}</p>
+          <h3>{title}</h3>
+         <p>{des}</p>
        <div className="flex space-x-3 my-3">   
     <span className="w-5 h-5 bg-amber-400 rounded-full cursor-pointer "/>
     <span className="w-5 h-5 bg-red-500 rounded-full cursor-pointer"/>

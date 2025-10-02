@@ -4,10 +4,12 @@ import './App.css'
 import ProudactC from './components/ProudactC'
 import ButtonI from './components/UI/ButtonI';
 import Model from './components/UI/Model';
+import Error from './components/UI/Error';
 import { produactlis,formlist } from './data'
 import Input from './components/UI/Input';
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import type { Iproduact } from './interfaces';
+import { produactV } from './validation';
 
 
 
@@ -27,6 +29,11 @@ function App() {
 
   };
   const[prodact,setprodact]=useState<Iproduact>(defultProduactObj);
+  const[errors ,seterrors]=useState({  title:'',
+    des:'',
+    imag:'',
+    price:''});
+   
    const [isOpen, setIsOpen] = useState(false);
 
 const close=()=> setIsOpen(false);
@@ -39,20 +46,42 @@ const onChangeHandler=(event:ChangeEvent<HTMLInputElement>)=>{
 ...prodact,
 [name]:value,
   });
+  seterrors({
+    ...errors,
+    [name]:""
+  });
 };
-const submitHandler=(event: FormEvent<HTMLFormElement>): void =>{
-  event.preventDefault();
- close();
-
-  };
-  const onCancel=()=>{
+ const onCancel=()=>{
     console.log("cancel");
     setprodact(defultProduactObj)
   }
+const submitHandler=(event: FormEvent<HTMLFormElement>): void =>{
+  event.preventDefault();
+  const {title,des,imag,price}=prodact;
+  const errors=produactV({
+    title,
+    des,
+    imag,
+   price,
+    
+  });
+  console.log(errors);
+  const haserror=Object.values(errors).some(value=>value=="")&&Object.values(errors).every(value=>value=="");
+  console.log(haserror);
+  if(!haserror){
+    seterrors(errors)
+    return;
+  }
+ 
+ close();
+
+  };
+ 
  const rendarproduact=produactlis.map(prodact=><ProudactC key={prodact.id} proudact={prodact }/> );
  const rendarformlist=formlist.map(input=><div className='text-black flex flex-col' key={input.id}>
   <label  htmlFor={input.id}>{input.label}</label>
   <Input type={input.type} id={input.id} name={input.name} value={prodact[input.name]} onChange={onChangeHandler}/>
+  <Error massege={errors[input.name]}/>
  </div>)
   
     
@@ -70,6 +99,7 @@ const submitHandler=(event: FormEvent<HTMLFormElement>): void =>{
     {rendarproduact}
   </div>
 </main>
+
 <Model isOpen={isOpen} close={close} title='Add produact'  >
   <form onSubmit={submitHandler} className='space-y-3'>
   {rendarformlist}
