@@ -16,3 +16,10 @@ export interface Iforms{
      label:string;
      type:string;
 }
+ export interface IErrors {
+  title: string;
+  des: string;
+  imag: string;
+  price: string;
+  color: string;   // ✅ small c و string
+}

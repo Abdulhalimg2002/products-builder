@@ -137,3 +137,17 @@ export const formlist:Iforms[]=[
     },
     
 ]
+export const Color:string[]=[
+    "#80A1BA",
+    "#6F00FF",
+    "#0C0C0C",
+    "#E62727",
+    "#08CB00",
+    "#465C88",
+    "#C83F12",
+    "#B13BFF",
+    "#00809D",
+    "#4ED7F1",
+    "#FCF259",
+    "#102E50",
+]

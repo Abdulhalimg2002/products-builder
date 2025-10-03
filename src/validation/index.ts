@@ -1,12 +1,14 @@
+import type { IErrors } from "../interfaces";
 
 
-export const produactV=(produact:{title:string,des:string, imag:string, price:string})=>{
+export const produactV=(produact:{title:string,des:string, imag:string, price:string,color:string[]}): IErrors =>{
 
-    const error:{title:string; des:string; imag:string; price:string;}={
+    const error: IErrors={
   title:"",
     des:"",
     imag:"",
     price:"",
+    color:"",
     };
      const validUrl: RegExp = /^(ftp|http|https):\/\/[^ "]+$/;
     if(!produact.title.trim()||produact.title.length<5 || produact.title.length>80 ){
@@ -22,6 +24,9 @@ export const produactV=(produact:{title:string,des:string, imag:string, price:st
     if(!produact.price.trim()||isNaN(Number(produact.price))){
         error.price="the price must be number";
     }
+    if (!produact.color || produact.color.length === 0 || produact.color.every(c => !c.trim())) {
+    error.color = "you must choose at least one color";
+  }
 
     return error;
 }
