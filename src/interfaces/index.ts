@@ -1,7 +1,10 @@
+import type { proudactN } from "../types";
+
 export interface Iproduact{
     id?:string|undefined;
     title:string;
     des:string;
+    
     imag:string;
     price:string;
     color:string[];
@@ -12,7 +15,7 @@ export interface Iproduact{
 }
 export interface Iforms{
     id:string;
-    name:'title'|'des'|'imag'|'price';
+    name:proudactN;
      label:string;
      type:string;
 }
@@ -23,3 +26,9 @@ export interface Iforms{
   price: string;
   color: string;   // ✅ small c و string
 }
+export interface Icategory{
+    id?:string;
+    name: string;
+    imag:string;
+}
+

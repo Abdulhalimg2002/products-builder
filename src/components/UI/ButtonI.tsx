@@ -8,7 +8,7 @@ width?:"w-full"|"w-fit";
 }
 const ButtonI=({children,className ,width,...rest}:IPropes)=>{
     return(
-        <button className={`${className} p-2 ${width} rounded-md text-white font-bold `} {...rest}>{children}</button>
+        <button className={`${className} p-2 ${width} rounded-md text-white font-medium`} {...rest}>{children}</button>
         
     )
 }
