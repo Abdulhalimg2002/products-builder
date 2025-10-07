@@ -15,7 +15,7 @@ import { produactV } from './validation';
 import Select from './components/UI/Select';
 import type { proudactN } from './types';
 import toast, { Toaster } from 'react-hot-toast';
-import { Bold } from 'lucide-react';
+
 
 
 
